@@ -1,341 +1,312 @@
-# Lesson 5: Lists and Tables
+# Lesson 6: Forms and Input
 
-## Unordered Lists
+## The Form Element
 
-Lists with bullet points:
+Forms collect user input and send it to a server:
 
 ```html
-<ul>
-    <li>Coffee</li>
-    <li>Tea</li>
-    <li>Milk</li>
-</ul>
+<form action="/submit" method="POST">
+    <!-- Form inputs go here -->
+</form>
 ```
 
-### Custom List Styling
+- **action**: URL where form data is sent
+- **method**: `GET` (data in URL) or `POST` (data in request body)
+
+## Text Input
+
+### Basic Text Input
 
 ```html
-<ul style="list-style-type: square;">
-    <li>Square bullets</li>
-</ul>
-
-<ul style="list-style-type: circle;">
-    <li>Circle bullets</li>
-</ul>
-
-<ul style="list-style-type: none;">
-    <li>No bullets</li>
-</ul>
+<label for="username">Username:</label>
+<input type="text" id="username" name="username">
 ```
 
-## Ordered Lists
-
-Lists with numbers:
+### Input with Attributes
 
 ```html
-<ol>
-    <li>First item</li>
-    <li>Second item</li>
-    <li>Third item</li>
-</ol>
+<label for="email">Email:</label>
+<input type="email" 
+       id="email" 
+       name="email" 
+       placeholder="Enter your email"
+       required
+       maxlength="50">
 ```
 
-### Ordered List Attributes
+Common attributes:
+
+- **id**: Unique identifier (links to label)
+- **name**: Field name sent to server
+- **placeholder**: Hint text inside input
+- **required**: Field must be filled
+- **maxlength**: Maximum character limit
+- **value**: Default value
+
+## Input Types
+
+### Email
 
 ```html
-<!-- Start from a different number -->
-<ol start="5">
-    <li>Fifth item</li>
-    <li>Sixth item</li>
-</ol>
-
-<!-- Reverse order -->
-<ol reversed>
-    <li>Third</li>
-    <li>Second</li>
-    <li>First</li>
-</ol>
-
-<!-- Different numbering types -->
-<ol type="A">
-    <li>Item A</li>
-    <li>Item B</li>
-</ol>
-
-<ol type="a">
-    <li>Item a</li>
-    <li>Item b</li>
-</ol>
-
-<ol type="I">
-    <li>Item I</li>
-    <li>Item II</li>
-</ol>
-
-<ol type="i">
-    <li>Item i</li>
-    <li>Item ii</li>
-</ol>
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required>
 ```
 
-## Nested Lists
-
-Lists within lists:
+### Password
 
 ```html
-<ul>
-    <li>Fruits
-        <ul>
-            <li>Apples</li>
-            <li>Oranges</li>
-            <li>Bananas</li>
-        </ul>
-    </li>
-    <li>Vegetables
-        <ul>
-            <li>Carrots</li>
-            <li>Broccoli</li>
-        </ul>
-    </li>
-</ul>
+<label for="password">Password:</label>
+<input type="password" id="password" name="password" minlength="8" required>
 ```
 
-### Mixed Nested Lists
+### Number
 
 ```html
-<ol>
-    <li>Main Topic 1
-        <ul>
-            <li>Subtopic A</li>
-            <li>Subtopic B</li>
-        </ul>
-    </li>
-    <li>Main Topic 2
-        <ul>
-            <li>Subtopic C</li>
-            <li>Subtopic D</li>
-        </ul>
-    </li>
-</ol>
+<label for="age">Age:</label>
+<input type="number" id="age" name="age" min="18" max="100" step="1">
 ```
 
-## Description Lists
-
-For term-definition pairs:
+### Date
 
 ```html
-<dl>
-    <dt>HTML</dt>
-    <dd>HyperText Markup Language - the standard language for web pages</dd>
+<label for="birthday">Birthday:</label>
+<input type="date" id="birthday" name="birthday">
+```
+
+### Time
+
+```html
+<label for="appointment">Appointment Time:</label>
+<input type="time" id="appointment" name="appointment">
+```
+
+### Tel (Telephone)
+
+```html
+<label for="phone">Phone:</label>
+<input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+```
+
+### URL
+
+```html
+<label for="website">Website:</label>
+<input type="url" id="website" name="website">
+```
+
+### Search
+
+```html
+<label for="search">Search:</label>
+<input type="search" id="search" name="search">
+```
+
+### Color
+
+```html
+<label for="color">Favorite Color:</label>
+<input type="color" id="color" name="color" value="#ff0000">
+```
+
+### Range (Slider)
+
+```html
+<label for="volume">Volume:</label>
+<input type="range" id="volume" name="volume" min="0" max="100" value="50">
+```
+
+### File Upload
+
+```html
+<label for="file">Upload File:</label>
+<input type="file" id="file" name="file" accept=".pdf,.doc,.docx">
+```
+
+## Checkboxes
+
+Select multiple options:
+
+```html
+<p>Choose your hobbies:</p>
+<input type="checkbox" id="reading" name="hobby" value="reading">
+<label for="reading">Reading</label>
+
+<input type="checkbox" id="sports" name="hobby" value="sports">
+<label for="sports">Sports</label>
+
+<input type="checkbox" id="music" name="hobby" value="music" checked>
+<label for="music">Music</label>
+```
+
+## Radio Buttons
+
+Select one option from a group:
+
+```html
+<p>Choose your gender:</p>
+<input type="radio" id="male" name="gender" value="male">
+<label for="male">Male</label>
+
+<input type="radio" id="female" name="gender" value="female">
+<label for="female">Female</label>
+
+<input type="radio" id="other" name="gender" value="other">
+<label for="other">Other</label>
+```
+
+**Note: Radio buttons with the same `name` attribute form a group.**
+
+## Textarea
+
+Multi-line text input:
+
+```html
+<label for="message">Message:</label>
+<textarea id="message" 
+          name="message" 
+          rows="5" 
+          cols="50"
+          placeholder="Enter your message here..."
+          maxlength="500"></textarea>
+```
+
+## Select (Dropdown)
+
+Choose from a list of options:
+
+```html
+<label for="country">Country:</label>
+<select id="country" name="country">
+    <option value="">-- Select a country --</option>
+    <option value="usa">United States</option>
+    <option value="uk">United Kingdom</option>
+    <option value="canada">Canada</option>
+    <option value="australia">Australia</option>
+</select>
+```
+
+### Pre-selected Option
+
+```html
+<select id="color" name="color">
+    <option value="red">Red</option>
+    <option value="blue" selected>Blue</option>
+    <option value="green">Green</option>
+</select>
+```
+
+### Option Groups
+
+```html
+<label for="car">Choose a car:</label>
+<select id="car" name="car">
+    <optgroup label="German Cars">
+        <option value="bmw">BMW</option>
+        <option value="mercedes">Mercedes</option>
+    </optgroup>
+    <optgroup label="Japanese Cars">
+        <option value="toyota">Toyota</option>
+        <option value="honda">Honda</option>
+    </optgroup>
+</select>
+```
+
+### Multiple Selection
+
+```html
+<label for="fruits">Choose fruits (hold Ctrl/Cmd):</label>
+<select id="fruits" name="fruits" multiple size="4">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="orange">Orange</option>
+    <option value="grape">Grape</option>
+</select>
+```
+
+## Buttons
+
+### Submit Button
+
+```html
+<button type="submit">Submit Form</button>
+<!-- or -->
+<input type="submit" value="Submit Form">
+```
+
+### Reset Button
+
+```html
+<button type="reset">Reset Form</button>
+```
+
+### Regular Button
+
+```html
+<button type="button" onclick="alert('Clicked!')">Click Me</button>
+```
+
+## Fieldset and Legend
+
+Group related form elements:
+
+```html
+<fieldset>
+    <legend>Personal Information</legend>
     
-    <dt>CSS</dt>
-    <dd>Cascading Style Sheets - used for styling web pages</dd>
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="fname">
     
-    <dt>JavaScript</dt>
-    <dd>Programming language for interactive web pages</dd>
-</dl>
+    <label for="lname">Last Name:</label>
+    <input type="text" id="lname" name="lname">
+</fieldset>
 ```
 
-### Multiple Definitions
+## Datalist
+
+Provide autocomplete suggestions:
 
 ```html
-<dl>
-    <dt>Coffee</dt>
-    <dd>Black hot drink</dd>
-    <dd>Popular morning beverage</dd>
-    
-    <dt>Milk</dt>
-    <dd>White cold drink</dd>
-</dl>
+<label for="browser">Choose a browser:</label>
+<input list="browsers" id="browser" name="browser">
+
+<datalist id="browsers">
+    <option value="Chrome">
+    <option value="Firefox">
+    <option value="Safari">
+    <option value="Edge">
+</datalist>
 ```
 
-## Tables
+## Form Validation
 
-Create structured data in rows and columns:
+### HTML5 Built-in Validation
 
 ```html
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>City</th>
-    </tr>
-    <tr>
-        <td>Alice</td>
-        <td>25</td>
-        <td>New York</td>
-    </tr>
-    <tr>
-        <td>Bob</td>
-        <td>30</td>
-        <td>Boston</td>
-    </tr>
-</table>
+<!-- Required field -->
+<input type="text" name="username" required>
+
+<!-- Email format -->
+<input type="email" name="email" required>
+
+<!-- Minimum length -->
+<input type="password" name="password" minlength="8" required>
+
+<!-- Pattern matching -->
+<input type="text" name="zipcode" pattern="[0-9]{5}" title="5-digit ZIP code">
+
+<!-- Number range -->
+<input type="number" name="age" min="18" max="120">
 ```
 
-- **`<table>`**: Container for the table
-- **`<tr>`**: Table row
-- **`<th>`**: Table header cell (bold and centered by default)
-- **`<td>`**: Table data cell
-
-## Table Sections
-
-Organize tables with semantic sections:
+### Custom Validation Messages
 
 ```html
-<table>
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Laptop</td>
-            <td>$999</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>Mouse</td>
-            <td>$25</td>
-            <td>15</td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="2">Total Items:</td>
-            <td>20</td>
-        </tr>
-    </tfoot>
-</table>
-```
-
-## Table Attributes
-
-### Border
-
-```html
-<table border="1">
-    <!-- table content -->
-</table>
-```
-
-### Cell Spacing and Padding
-
-```html
-<table border="1" cellspacing="10" cellpadding="15">
-    <!-- table content -->
-</table>
-```
-
-**Note: Use CSS for styling in modern HTML.**
-
-## Spanning Cells
-
-### Colspan (Horizontal Span)
-
-```html
-<table border="1">
-    <tr>
-        <th colspan="3">Monthly Savings</th>
-    </tr>
-    <tr>
-        <th>Month</th>
-        <th>Savings</th>
-        <th>Total</th>
-    </tr>
-    <tr>
-        <td>January</td>
-        <td>$100</td>
-        <td>$100</td>
-    </tr>
-</table>
-```
-
-### Rowspan (Vertical Span)
-
-```html
-<table border="1">
-    <tr>
-        <th>Name</th>
-        <td>John</td>
-    </tr>
-    <tr>
-        <th rowspan="2">Phone</th>
-        <td>555-1234</td>
-    </tr>
-    <tr>
-        <td>555-5678</td>
-    </tr>
-</table>
-```
-
-## Caption
-
-Add a title to your table:
-
-```html
-<table border="1">
-    <caption>Student Grades</caption>
-    <tr>
-        <th>Name</th>
-        <th>Grade</th>
-    </tr>
-    <tr>
-        <td>Alice</td>
-        <td>A</td>
-    </tr>
-    <tr>
-        <td>Bob</td>
-        <td>B+</td>
-    </tr>
-</table>
-```
-
-## Column Groups
-
-Style entire columns:
-
-```html
-<table border="1">
-    <colgroup>
-        <col span="1" style="background-color: lightblue;">
-        <col span="2" style="background-color: lightgreen;">
-    </colgroup>
-    <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>City</th>
-    </tr>
-    <tr>
-        <td>Alice</td>
-        <td>25</td>
-        <td>New York</td>
-    </tr>
-</table>
-```
-
-## Accessible Tables
-
-Use scope for better accessibility:
-
-```html
-<table border="1">
-    <tr>
-        <th scope="col">Month</th>
-        <th scope="col">Sales</th>
-    </tr>
-    <tr>
-        <th scope="row">January</th>
-        <td>$10,000</td>
-    </tr>
-    <tr>
-        <th scope="row">February</th>
-        <td>$12,000</td>
-    </tr>
-</table>
+<input type="text" 
+       id="username" 
+       name="username" 
+       required
+       oninvalid="this.setCustomValidity('Please enter your username')"
+       oninput="this.setCustomValidity('')">
 ```
 
 ## Complete Example
@@ -346,118 +317,128 @@ Use scope for better accessibility:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lists and Tables Demo</title>
+    <title>Registration Form</title>
     <style>
-        table {
-            border-collapse: collapse;
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input, select, textarea {
             width: 100%;
-            margin: 20px 0;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+        button:hover {
+            background-color: #45a049;
+        }
+        fieldset {
+            margin-top: 20px;
+            border: 2px solid #ddd;
+            padding: 15px;
         }
     </style>
 </head>
 <body>
-    <h1>Restaurant Menu</h1>
+    <h1>Registration Form</h1>
     
-    <h2>Appetizers</h2>
-    <ul>
-        <li>Caesar Salad</li>
-        <li>Garlic Bread</li>
-        <li>Buffalo Wings</li>
-    </ul>
-    
-    <h2>Main Courses</h2>
-    <ol>
-        <li>Grilled Salmon
-            <ul>
-                <li>Served with vegetables</li>
-                <li>Lemon butter sauce</li>
-            </ul>
-        </li>
-        <li>Beef Steak
-            <ul>
-                <li>Cooked to order</li>
-                <li>Side of mashed potatoes</li>
-            </ul>
-        </li>
-    </ol>
-    
-    <h2>Price List</h2>
-    <table>
-        <caption>Menu Prices</caption>
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Category</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Caesar Salad</td>
-                <td>Appetizer</td>
-                <td>$8.99</td>
-            </tr>
-            <tr>
-                <td>Grilled Salmon</td>
-                <td>Main Course</td>
-                <td>$18.99</td>
-            </tr>
-            <tr>
-                <td>Beef Steak</td>
-                <td>Main Course</td>
-                <td>$24.99</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="2"><strong>Average Price</strong></td>
-                <td><strong>$17.66</strong></td>
-            </tr>
-        </tfoot>
-    </table>
-    
-    <h2>Glossary</h2>
-    <dl>
-        <dt>Al Dente</dt>
-        <dd>Pasta cooked to be firm to the bite</dd>
+    <form action="/submit" method="POST">
+        <fieldset>
+            <legend>Personal Information</legend>
+            
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" required>
+            
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890">
+            
+            <label for="birthday">Date of Birth:</label>
+            <input type="date" id="birthday" name="birthday">
+        </fieldset>
         
-        <dt>Garnish</dt>
-        <dd>Decorative addition to a dish</dd>
-    </dl>
+        <fieldset>
+            <legend>Account Details</legend>
+            
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" minlength="4" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" minlength="8" required>
+            
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="">-- Select a country --</option>
+                <option value="usa">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="canada">Canada</option>
+            </select>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Preferences</legend>
+            
+            <label>Interests:</label>
+            <input type="checkbox" id="tech" name="interest" value="tech">
+            <label for="tech">Technology</label>
+            
+            <input type="checkbox" id="sports" name="interest" value="sports">
+            <label for="sports">Sports</label>
+            
+            <input type="checkbox" id="art" name="interest" value="art">
+            <label for="art">Art</label>
+            
+            <label for="bio">Bio:</label>
+            <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+        </fieldset>
+        
+        <button type="submit">Register</button>
+        <button type="reset">Clear Form</button>
+    </form>
 </body>
 </html>
 ```
 
 ## Best Practices
 
-1. **Use semantic HTML**: `<thead>`, `<tbody>`, `<tfoot>` for structure
-1. **Add captions**: Describe what the table contains
-1. **Use scope attributes**: Improve accessibility
-1. **Don’t use tables for layout**: Use CSS Grid or Flexbox instead
-1. **Keep tables simple**: Complex tables are hard to read
-1. **Make tables responsive**: Consider mobile users
+1. **Always use labels**: Link labels to inputs with `for` and `id`
+1. **Use appropriate input types**: Better UX and validation
+1. **Provide clear instructions**: Use placeholders and helper text
+1. **Validate input**: Use HTML5 validation attributes
+1. **Make forms accessible**: Use semantic HTML and ARIA when needed
+1. **Group related fields**: Use `<fieldset>` and `<legend>`
+1. **Give feedback**: Show errors and success messages clearly
 
 ## Practice Exercises
 
-1. Create a shopping list using an unordered list with nested items
-1. Build a step-by-step recipe using an ordered list
-1. Create a table showing a weekly schedule with days and activities
-1. Use colspan and rowspan to create a complex table layout
-1. Build a glossary using description lists
-1. Create a navigation menu using an unordered list
+1. Create a contact form with name, email, subject, and message fields
+1. Build a survey form with various input types (radio, checkbox, select)
+1. Make a login form with username and password fields
+1. Create a job application form with file upload capability
+1. Build a feedback form with a rating scale using radio buttons
+1. Add proper validation to all your forms
 
 ## Next Lesson
 
-In Lesson 6, we’ll learn about HTML forms and user input.
+In Lesson 7, we’ll learn about semantic HTML and page structure.
