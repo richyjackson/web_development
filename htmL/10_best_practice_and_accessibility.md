@@ -3,7 +3,7 @@
 ## HTML Best Practices
 
 ### 1. Always Use DOCTYPE
-
+ 
 ```html
 <!DOCTYPE html>
 ```
